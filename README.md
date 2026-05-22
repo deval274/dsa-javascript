@@ -9,6 +9,8 @@ JavaScript
 
 ## Phase 0 — Programming Basics
 
+Each exercise under `warm_up/` has `index.js` (your code) and `note.md` (topic notes, scenarios, Big O).
+
 - [ ] Functions
 - [ ] If / Else
 - [ ] Loops
