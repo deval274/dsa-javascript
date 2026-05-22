@@ -16,3 +16,20 @@ function isEligibleForVoting(age){
 console.log(isEligibleForVoting(18));
 console.log(isEligibleForVoting(12));
 console.log(isEligibleForVoting(-3));
+
+
+// create function that check the number is even or odd
+
+function isEvenOrOdd(number) {
+    if (number % 2 == 0) {
+        return "number is even";
+    }
+    else {
+        return "number is odd"
+    }
+}
+
+console.log(isEvenOrOdd(2));
+console.log(isEvenOrOdd(3));
+
+
