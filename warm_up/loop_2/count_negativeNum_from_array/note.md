@@ -51,10 +51,10 @@ Given an array of numbers, return how many elements are **strictly negative** (l
 ```mermaid
 flowchart TD
   start[count = 0, i = 0] --> check{i less than length?}
-  check -->|yes| val[Read arr at i]
-  val --> neg{arr[i] less than 0?}
-  neg -->|yes| inc[count++]
-  neg -->|no| next[i++]
+  check -->|yes| val[Read value at index i]
+  val --> neg{value at i less than 0?}
+  neg -->|yes| inc[Increment count]
+  neg -->|no| next[Increment i]
   inc --> next
   next --> check
   check -->|no| return[Return count]

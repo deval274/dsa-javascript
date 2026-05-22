@@ -48,10 +48,10 @@ Given an array and a target value `number`:
 
 ```mermaid
 flowchart TD
-  start[i = 0] --> check{i less than length?}
-  check -->|yes| eq{arr[i] equals target?}
+  start[Set i to 0] --> check{i less than length?}
+  check -->|yes| eq{value at i equals target?}
   eq -->|yes| found[Return index i]
-  eq -->|no| inc[i++]
+  eq -->|no| inc[Increment i]
   inc --> check
   check -->|no| nf[Return -1]
 ```

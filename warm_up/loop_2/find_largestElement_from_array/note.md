@@ -46,11 +46,11 @@ Return `-4`.
 flowchart TD
   start[Set largest to -Infinity] --> empty{length equals 0?}
   empty -->|yes optional| msg[Return error or undefined]
-  empty -->|no| loop[i = 0]
+  empty -->|no| loop[Set i to 0]
   loop --> check{i less than length?}
-  check -->|yes| cmp{arr[i] greater than largest?}
-  cmp -->|yes| upd[largest = arr[i]]
-  cmp -->|no| inc[i++]
+  check -->|yes| cmp{value at i greater than largest?}
+  cmp -->|yes| upd[Update largest from value at i]
+  cmp -->|no| inc[Increment i]
   upd --> inc
   inc --> check
   check -->|no| ret[Return largest]

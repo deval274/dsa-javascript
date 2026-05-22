@@ -70,11 +70,11 @@ If you forget `j++`, the condition never becomes false → **infinite loop**.
 ```mermaid
 flowchart TD
   start[Start i = 0] --> check{i less than length?}
-  check -->|yes| read[Read arr at i]
+  check -->|yes| read[Read value at index i]
   read --> even{value mod 2 equals 0?}
   even -->|yes| log[Log value and index]
   even -->|no| skip[Skip]
-  log --> inc[i++]
+  log --> inc[Increment i]
   skip --> inc
   inc --> check
   check -->|no| end[Done]
