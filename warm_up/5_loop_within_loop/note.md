@@ -27,15 +27,11 @@ Understand how nested loops behave by tracing different `j` loop conditions:
 
 If the outer loop runs `n` times and the inner loop runs `m` times for each outer iteration, total operations are roughly:
 
-\[
-\text{total} = n \times m
-\]
+`total = n × m`
 
 But in many examples here, `m` is not constant — it depends on `i` (triangle patterns). Then the total becomes a sum like:
 
-\[
-0 + 1 + 2 + \dots + (n-1) = \frac{(n-1)n}{2}
-\]
+`0 + 1 + 2 + ... + (n - 1) = (n - 1) * n / 2`
 
 ---
 
