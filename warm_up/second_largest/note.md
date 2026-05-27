@@ -100,12 +100,12 @@ else if (secondLargest < arr[i] && arr[i] < firstLargest) {
 flowchart TD
   start[first = -Inf, second = -Inf] --> len{length less than 2?}
   len -->|yes| err[Return min length message]
-  len -->|no| loop[For each arr at i]
-  loop --> gt{arr[i] greater than first?}
-  gt -->|yes| shift[second = first, first = arr[i]]
-  gt -->|no| mid{arr[i] greater than second and less than first?}
-  mid -->|yes| upd[second = arr[i]]
-  mid -->|no| next[Next i]
+  len -->|no| loop[For each value in array]
+  loop --> gt{value greater than first?}
+  gt -->|yes| shift[second = first, first = value]
+  gt -->|no| mid{value greater than second and less than first?}
+  mid -->|yes| upd[second = value]
+  mid -->|no| next[Next index]
   shift --> next
   upd --> next
   next --> loop
