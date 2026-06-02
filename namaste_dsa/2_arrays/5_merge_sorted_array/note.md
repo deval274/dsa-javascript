@@ -6,9 +6,10 @@ Merging two sorted arrays is a core DSA skill. The twist in this problem is that
 
 This is LeetCode **88. Merge Sorted Array**.
 
-Your file shows two good approaches:
+Your `index.js` shows three approaches (two are in-place from the end):
 
-- **Optimal in-place from the end** (O(1) extra space)
+- **Optimized in-place from the end** (break early when `nums2` is exhausted, O(1) extra space)
+- **Standard in-place from the end** (fills every position, O(1) extra space)
 - **Copy-first-half then merge forward** (easier to think about, O(m) extra space)
 
 ---
@@ -95,9 +96,39 @@ flowchart TD
 
 ---
 
-## Approach 1 (optimal): in-place from the end
+## Approach 1 (optimized): in-place from the end with early break
 
-This is your first `merge` function:
+This is your first `merge` in `index.js` (labeled `// optimized 1st approach`):
+
+```javascript
+var merge = function(nums1, m, nums2, n) {
+  let p1 = m - 1;
+  let p2 = n - 1;
+
+  for (let i = nums1.length - 1; i >= 0; i--) {
+    if (p2 < 0) break; // nums2 fully placed
+
+    if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+      nums1[i] = nums1[p1];
+      p1--;
+    } else {
+      nums1[i] = nums2[p2];
+      p2--;
+    }
+  }
+};
+```
+
+What’s special here:
+
+- If `p2 < 0`, everything from `nums2` has been merged, so you can stop early.
+- The compare is `nums1[p1] > nums2[p2]` (take from `nums1` only if it’s strictly bigger; otherwise take from `nums2`).
+
+---
+
+## Approach 2 (standard): in-place from the end
+
+This is your second `merge` in `index.js` (labeled `// 1st approach`):
 
 ```javascript
 var merge = function(nums1, m, nums2, n) {
@@ -123,9 +154,9 @@ Why the condition works:
 
 ---
 
-## Approach 2 (simpler to reason): copy then merge forward
+## Approach 3 (simpler to reason): copy then merge forward
 
-This is your second `merge` function:
+This is your third `merge` in `index.js` (labeled `// 2nd approach`):
 
 ```javascript
 var merge = function(nums1, m, nums2, n) {
@@ -157,11 +188,12 @@ This avoids overwrite issues because the original `nums1` values are safely stor
 
 ## Your implementation
 
-You defined `merge` twice in the same file. In JavaScript, the **second definition overwrites the first**, so only the copy-based approach will run if you call `merge`.
+You defined `merge` **three times** in the same file. In JavaScript, the **last definition overwrites the earlier ones**, so only the **copy-based approach (Approach 3)** will run if you call `merge` as written.
 
 For learning/testing both, rename them:
 
-- `mergeInPlaceFromEnd`
+- `mergeInPlaceOptimized`
+- `mergeInPlaceStandard`
 - `mergeUsingCopy`
 
 ---
@@ -170,7 +202,7 @@ For learning/testing both, rename them:
 
 1) `nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3` → `[1,2,2,3,5,6]`  
 2) `nums1=[0], m=0, nums2=[1], n=1` → `[1]`  
-3) `nums1=[2,0], m=1, nums2=[1], n=1` → `[1,2]`\n
+3) `nums1=[2,0], m=1, nums2=[1], n=1` → `[1,2]`
 ---
 
 ## Complexity
